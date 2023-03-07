@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DropdownController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(DropdownController::class)->group(function() {
+    Route::get('dropdown', 'index');
+    Route::post('fetch-states', 'fetchState')->name('state.post');
+    Route::post('fetch-cities', 'fetchCity')->name('city.post');
 });
